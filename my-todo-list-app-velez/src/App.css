@@ -1,0 +1,255 @@
+html {
+  background: #000;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body {
+  width: 100%;
+  margin: auto;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.todo-list {
+  background: #fff;
+  font-size: 15px;
+  max-width: 300px;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  -webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+/** BUTTONS*/
+.button {
+  outline: none;
+  padding: 8px;
+  font-size: 15px;
+  border: 0px solid;
+  border-radius: 5px;
+  color: white;
+}
+
+.button[disabled] {
+  opacity: 0.3;
+}
+
+.button.pink {
+  background: blue;
+}
+
+.button.pink:hover {
+  background: cyan;
+}
+
+.button.pink:active {
+  background: blue;
+}
+
+.button.blue {
+  background: #25b0bc;
+}
+
+.button.blue:hover {
+  background: #166b72;
+}
+
+.button.blue:active {
+  background: #25b0bc;
+}
+
+/** TODO*/
+.file-input {
+  padding: 2px;
+  background: #f8f8f8;
+}
+
+.file-input > .text {
+  outline: none;
+  padding: 0px 10px;
+  font-size: 15px;
+  width: 230px;
+  height: 46px;
+  background: transparent;
+  border: 0px solid;
+}
+
+/** CHECKBOX*/
+/* Shaw : https://codepen.io/shshaw/pen/WXMdwE */
+.todo {
+  display: block;
+  position: relative;
+  padding: 1em 1em 1em 16%;
+  margin: 0 auto;
+  cursor: pointer;
+  border-bottom: solid 1px #ddd;
+}
+
+.todo:last-child {
+  border-bottom: none;
+}
+
+.todo.new-item {
+  opacity: 0;
+  -webkit-transform: translateX(100px);
+          transform: translateX(100px);
+  -webkit-animation: fadeIn .3s linear forwards;
+          animation: fadeIn .3s linear forwards;
+}
+
+.todo__state {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.todo__text {
+  color: #076b74;
+  text-align: left;
+  -webkit-transition: all 0.2s linear 0.2s;
+  transition: all 0.2s linear 0.2s;
+}
+
+.todo__icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  fill: none;
+  stroke: #42d7e4;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.todo__line,
+.todo__box,
+.todo__check {
+  -webkit-transition: stroke-dashoffset 0.4s cubic-bezier(0.9, 0, 0.5, 1);
+  transition: stroke-dashoffset 0.4s cubic-bezier(0.9, 0, 0.5, 1);
+}
+
+.todo__circle {
+  stroke: #42d7e4;
+  stroke-dasharray: 1 6;
+  stroke-width: 0;
+  -webkit-transform-origin: 13.5px 12.5px;
+          transform-origin: 13.5px 12.5px;
+  -webkit-transform: scale(0.4) rotate(0deg);
+          transform: scale(0.4) rotate(0deg);
+  -webkit-animation: none 0.4s linear;
+          animation: none 0.4s linear;
+}
+
+@-webkit-keyframes explode {
+  30% {
+    stroke-width: 3;
+    stroke-opacity: 1;
+    -webkit-transform: scale(0.8) rotate(40deg);
+            transform: scale(0.8) rotate(40deg);
+  }
+  100% {
+    stroke-width: 0;
+    stroke-opacity: 0;
+    -webkit-transform: scale(1.1) rotate(60deg);
+            transform: scale(1.1) rotate(60deg);
+  }
+}
+
+@keyframes explode {
+  30% {
+    stroke-width: 3;
+    stroke-opacity: 1;
+    -webkit-transform: scale(0.8) rotate(40deg);
+            transform: scale(0.8) rotate(40deg);
+  }
+  100% {
+    stroke-width: 0;
+    stroke-opacity: 0;
+    -webkit-transform: scale(1.1) rotate(60deg);
+            transform: scale(1.1) rotate(60deg);
+  }
+}
+
+.todo__box {
+  stroke-dasharray: 56.1053, 56.1053;
+  stroke-dashoffset: 0;
+  -webkit-transition-delay: 0.08s;
+          transition-delay: 0.08s;
+}
+
+.todo__check {
+  stroke: #42d7e4;
+  stroke-dasharray: 9.8995, 9.8995;
+  stroke-dashoffset: 9.8995;
+  -webkit-transition-duration: 0.16s;
+          transition-duration: 0.16s;
+}
+
+.todo__line {
+  stroke-dasharray: 168, 1684;
+  stroke-dashoffset: 168;
+}
+
+.todo__circle {
+  -webkit-animation-delay: 0.28s;
+          animation-delay: 0.28s;
+  -webkit-animation-duration: 0.28s;
+          animation-duration: 0.28s;
+}
+
+.todo__state:checked ~ .todo__text {
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  color: #a5e7ec;
+  opacity: 0.6;
+}
+
+.todo__state:checked ~ .todo__icon .todo__box {
+  stroke-dashoffset: 56.1053;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.todo__state:checked ~ .todo__icon .todo__line {
+  stroke-dashoffset: -8;
+}
+
+.todo__state:checked ~ .todo__icon .todo__check {
+  stroke-dashoffset: 0;
+  -webkit-transition-delay: 0.24s;
+          transition-delay: 0.24s;
+}
+
+.todo__state:checked ~ .todo__icon .todo__circle {
+  -webkit-animation-name: explode;
+          animation-name: explode;
+}
+
+@-webkit-keyframes fadeIn {
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    opacity: 1;
+  }
+}
+/*# sourceMappingURL=App.css.map */
